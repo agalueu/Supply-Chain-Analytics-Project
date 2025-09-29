@@ -53,13 +53,14 @@ README.md   → project summary and instructions
 
 ![ERD](docs/ERD.png)
 
-## 🔄 How to Reproduce
-
-1. Clone this repository.
-2. Run [SCHEMA](sql/SCHEMA.sql) to create tables and insert data.
-3. Import queries into **pgAdmin** or any SQL client.
-4. Connect the PostgreSQL database to **Power BI**.
-5. Recreate the visualizations described below.
+### 🔄 How to Reproduce
+- Create a PostgreSQL database:
+      * In pgAdmin → right-click Databases → Create - Database → name it supply_chain (or any name you preffer).
+- Schema & Data Import:
+      * Run the schema script in [SCHEMA](sql/SCHEMA.sql) to create all tables and insert data.
+- Sample queries:
+      * Analytical SQL queries are available in [Analysis](sql/Analysis.sql).
+      * These queries can be run in pgAdmin or connected directly to Power BI for visualization.
 
 ## 📈 Power BI Dashboard
 
