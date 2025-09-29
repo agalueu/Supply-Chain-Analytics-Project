@@ -32,6 +32,20 @@ This project analyzes a simulated **supply chain dataset** to extract insights i
 5. Which suppliers are most reliable?
 6. Which SKUs and regions drive the most profitability?
 
+## 🗄 Database Schema & ERD
+
+- The database schema is defined in [SCHEMA](sql/SCHEMA.sql)
+- It creates the following key tables:
+  * products → product catalog with category & brand.
+  * suppliers → supplier info with lead time & reliability.
+  * warehouses → warehouse location & capacity.
+  * fact_chain_supplies → fact table with sales, inventory, forecasts, stockouts.
+  * fact_product_prices → product cost & price by date.
+
+## 📌 Entity-Relationship Diagram (ERD):
+
+![ERD](docs/ERD.png)
+
 ## 🔄 How to Reproduce
 
 1. Clone this repository.
@@ -44,7 +58,7 @@ This project analyzes a simulated **supply chain dataset** to extract insights i
 
 The dashboard includes:
 
-* **KPIs**: turnover, DOH, service level, stockout rate, profit margin.
+* **KPIs**: revenue, profit, turnover ratio, level service
 * **Charts**:
 
   * Bar chart → Inventory Turnover Ratio ... [Turnover ratio](images/BI_1_turnover_ratio.png)
