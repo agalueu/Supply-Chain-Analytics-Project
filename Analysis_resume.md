@@ -60,7 +60,7 @@ Measure how accurate demand forecasts are (MAPE) for each product and region, wh
 
 Sample: [Forecast](images/3_mape.png)
 
-**Title:** Service Level & Stockout Rate
+# 4. Service Level & Stockout Rate
 
 📝 **Query Goal**
 Evaluate product availability by measuring service levels and frequency of stockouts at warehouse level.
@@ -81,7 +81,7 @@ Evaluate product availability by measuring service levels and frequency of stock
 
 Sample: [Service level](images/4_service_stockout.png)
 
-**Title:** Supplier Reliability & Orders
+# 5. Supplier Reliability & Orders
 
 📝 **Query Goal**
 Assess supplier performance based on order volume, lead times, and reliability.
@@ -100,7 +100,7 @@ Assess supplier performance based on order volume, lead times, and reliability.
 
 Sample: [Reliability](images/5_reliability.png)
 
-**Title:** Profitability (by SKU & Region)
+# 6. Profitability (by SKU & Region)
 
 📝 **Query Goal**
 Measure profitability and profit margins across products and regions.
