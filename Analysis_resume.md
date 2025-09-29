@@ -63,6 +63,7 @@ Sample: [Forecast](images/3_mape.png)
 # 4. Service Level & Stockout Rate
 
 📝 **Query Goal**
+
 Evaluate product availability by measuring service levels and frequency of stockouts at warehouse level.
 
 ⚙️ **Steps / Logic**
