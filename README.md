@@ -35,7 +35,7 @@ This project analyzes a simulated **supply chain dataset** to extract insights i
 ## 🔄 How to Reproduce
 
 1. Clone this repository.
-2. Run [`SCHEMA.sql`](./SCHEMA.sql) to create tables and insert data.
+2. Run [SCHEMA](sql/SCHEMA.sql) to create tables and insert data.
 3. Import queries into **pgAdmin** or any SQL client.
 4. Connect the PostgreSQL database to **Power BI**.
 5. Recreate the visualizations described below.
