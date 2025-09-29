@@ -55,7 +55,7 @@ README.md   → project summary and instructions
 
 ### 🔄 How to Reproduce
 - Create a PostgreSQL database:
-      * In pgAdmin → right-click Databases → Create - Database → name it supply_chain (or any name you preffer).
+      * In pgAdmin → right-click Databases → Create - Database → name it `supply_chain` (or any name you preffer).
 - Schema & Data Import:
       * Run the schema script in [SCHEMA](sql/SCHEMA.sql) to create all tables and insert data.
 - Sample queries:
