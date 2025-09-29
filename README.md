@@ -32,6 +32,13 @@ This project analyzes a simulated **supply chain dataset** to extract insights i
 5. Which suppliers are most reliable?
 6. Which SKUs and regions drive the most profitability?
 
+## 📂 Repository Structure
+
+sql/        → database schema, load script, and analysis queries  
+docs/       → ERD  
+images/     → screenshots of dashboards (Power BI) and query results (pgAdmin)  
+README.md   → project summary and instructions  
+
 ## 🗄 Database Schema & ERD
 
 - The database schema is defined in [SCHEMA](sql/SCHEMA.sql)
