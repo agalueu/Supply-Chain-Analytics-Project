@@ -53,7 +53,7 @@ The dashboard includes:
   * Combo chart → Service Level & Stockout Rate ... [Service level](images/BI_4_service.png)
   * Bubble chart → Supplier Reliability vs. Lead Time ... [Relliability](images/BI_5_reliability.png)
   * Line chart → Profitability by SKU & Region ... [Profitability](images/BI_6_profitability.png)
-  * [Overall Chart](images/Overall chart.png) 
+  * [Overall Chart](images/Overall_chart.png)
 
 ## ✅ Key Takeaways
 
