@@ -10,7 +10,7 @@ This project analyzes a simulated **supply chain dataset** to extract insights i
 * Enriched with attributes for **products, suppliers, and warehouses**.
 * Final structure includes **fact tables** for transactions and prices, and **dimension tables** for products, suppliers, and warehouses.
 
-## 📌 Original Data Source
+## 🌐 Original Data Source
 
 * [Kaggle – Supply Chain Dataset](https://www.kaggle.com/) *(reference link placeholder)*
 * Additional attributes (product brands, supplier reliability, warehouse capacity) were added to enrich the dataset.
