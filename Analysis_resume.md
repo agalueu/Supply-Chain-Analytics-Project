@@ -1,123 +1,115 @@
-In this section I´m going to talk about some results in the different queries that i did in the [Query Analysis](sql/Analysis.sql) file, what was the purpose, steps to do it and business insight for this analysis
+# 📊 Analysis Summary
 
-# 1. Inventory Turnover Ratio
+This section explains the analytical logic, SQL approach, and business insights derived from the dataset.
 
-📝 **Query Goal**
-Measure how efficiently products move through the supply chain by calculating the **inventory turnover ratio** per SKU and region.
+The analysis is performed directly on raw transactional data, focusing on **SKU-level operational performance**.
 
-⚙️ **Steps / Logic**
+---
 
-1. Aggregate total units sold and average inventory levels from `fact_chain_supplies`.
-2. Calculate turnover ratio = units sold ÷ average inventory.
-3. Group results by SKU and supplier region.
-4. Join with `products` to show product names.
+# 1. Inventory Turnover
 
-📊 **Business Insights**
+## 📝 Objective
+Measure how efficiently inventory is utilized by each SKU.
 
-* High turnover ratio → product sells quickly relative to stock (good efficiency).
-* Low turnover ratio → overstock or slow-moving inventory (possible waste).
-* Useful to identify which products are tying up capital in storage.
+## ⚙️ Logic
+- Aggregate total units sold per SKU  
+- Compute average inventory level  
+- Calculate turnover ratio:
 
-Sample: [Turnover Ratio](images/1_turnover_ratio.png)
+Turnover = Total Units Sold ÷ Average Inventory
 
-# 2. Days of Inventory on Hand (DOH)
+## 📊 Insight
 
-📝 **Query Goal**
-Estimate how long current inventory will last based on sales velocity.
+- High turnover → efficient, fast-moving products  
+- Low turnover → slow-moving or overstocked items  
 
-⚙️ **Steps / Logic**
+This metric helps identify where inventory is being used effectively versus where capital may be tied up unnecessarily.
 
-1. Aggregate daily sales (`units_sold`) and average inventory levels.
-2. Calculate DOH = average inventory ÷ daily units sold.
-3. Group by product, warehouse, and day.
-4. Join with `products` for product names.
+---
 
-📊 **Business Insights**
+# 2. Stockout Rate
 
-* Lower DOH → leaner inventory, products move faster.
-* Higher DOH → excess stock, risk of obsolescence.
-* Key KPI for balancing customer service with cost control.
+## 📝 Objective
+Evaluate how often products are unavailable.
 
-Sample: [DOH](images/2_doh.png)
+## ⚠️ Note
+The dataset does not contain stockout events (`stockout_flag = 1`), therefore this metric does not produce meaningful results.
 
-# 3. Forecast Accuracy (MAPE) vs Sales Volume
+## 📊 Insight
 
-### 📝 Query Goal
-Measure how accurate demand forecasts are (MAPE) for each product and region, while also capturing the average sales volume to contextualize accuracy.
+Since stockouts are not observed, the analysis shifts toward **inventory risk** to estimate potential availability issues.
 
-### ⚙️ Steps / Logic
+---
 
-- Compare units_sold against demand_forecast.
-- Compute MAPE = Mean Absolute Percentage Error.
-- Calculate average units sold per SKU & region.
-- Join with product names for readability.
+# 3. Price vs Demand (Elasticity Proxy)
 
-### 📊 Business Insights
+## 📝 Objective
+Analyze the relationship between pricing and demand.
 
-- Helps identify forecasting weaknesses by product/region.
-- Puts forecast accuracy into perspective by linking it with sales volume.
-- High MAPE in high-volume SKUs is a bigger risk than in low-volume ones.
+## ⚙️ Logic
+- Compute average price per SKU  
+- Compute average units sold  
+- Compare both metrics
 
-Sample: [Forecast](images/3_mape.png)
+## 📊 Insight
 
-# 4. Service Level & Stockout Rate
+- Lower price with higher demand → price-sensitive products  
+- Higher price with stable demand → strong products  
+- Mixed patterns indicate varying demand behavior  
 
-📝 **Query Goal**
+This is a **proxy analysis**, not a causal elasticity model.
 
-Evaluate product availability by measuring service levels and frequency of stockouts at warehouse level.
+---
 
-⚙️ **Steps / Logic**
+# 4. Inventory Risk (Days of Inventory)
 
-1. Identify stockout days (`stockout_flag = 1`) and count them.
-2. Calculate total operational days per warehouse.
-3. Compute service level = units sold ÷ demand forecast.
-4. Compute stockout rate = stockout days ÷ total days.
-5. Group by warehouse and date, link to regions.
+## 📝 Objective
+Estimate how long inventory will last based on demand.
 
-📊 **Business Insights**
+## ⚙️ Logic
 
-* High service level = orders fulfilled effectively.
-* High stockout rate = poor availability, potential lost sales.
-* Helps balance customer satisfaction vs. supply efficiency.
+Days of Inventory = Average Inventory ÷ Average Units Sold
 
-Sample: [Service level](images/4_service_stockout.png)
+## 📊 Insight
 
-# 5. Supplier Reliability & Orders
+- High values → overstock risk  
+- Low values → potential stockout risk  
 
-📝 **Query Goal**
-Assess supplier performance based on order volume, lead times, and reliability.
+This metric is critical for balancing:
+- service levels  
+- inventory costs  
 
-⚙️ **Steps / Logic**
+---
 
-1. Aggregate order count and total units sold by supplier.
-2. Capture supplier lead time and reliability score.
-3. Group results by supplier and region.
+# 5. Demand Trends Over Time
 
-📊 **Business Insights**
+## 📝 Objective
+Analyze how demand evolves over time.
 
-* High reliability + short lead time → best partners.
-* Low reliability or long lead times → supply chain risk.
-* Useful for supplier scorecards and vendor negotiations.
+## ⚙️ Logic
+- Aggregate total units sold by month  
+- Identify patterns and trends
 
-Sample: [Reliability](images/5_reliability.png)
+## 📊 Insight
 
-# 6. Profitability (by SKU & Region)
+- Highlights demand fluctuations  
+- Helps detect trends or seasonality  
+- Supports planning and forecasting decisions  
 
-📝 **Query Goal**
-Measure profitability and profit margins across products and regions.
+---
 
-⚙️ **Steps / Logic**
+# 🧠 Overall Insights
 
-1. Join sales fact table with product prices to get unit cost and price.
-2. Compute revenue (units × price), cost (units × cost), and profit (revenue – cost).
-3. Calculate profit margin %.
-4. Group results by SKU and region.
-5. Join with `products` for product names.
+- Inventory efficiency varies significantly across SKUs  
+- Some products show strong demand but insufficient inventory coverage  
+- Others indicate excess stock with low turnover  
+- Pricing plays a role in demand behavior, though not uniformly  
+- Time-based trends provide additional operational context  
 
-📊 **Business Insights**
+---
 
-* Identifies most profitable SKUs and regions.
-* Low margins may highlight pricing or cost issues.
-* Supports product portfolio optimization.
+# 📌 Final Note
 
-Sample: [Profitability](images/6_profitability.png)
+The analysis demonstrates how to extract meaningful insights from **limited and unstructured data**, focusing on operational metrics rather than relying on predefined business dimensions.
+
+This reflects a realistic data scenario where analysts must work with imperfect datasets and still produce valuable conclusions.
