@@ -87,7 +87,7 @@ The dashboard focuses on operational decision-making and includes:
 
 - **Bar Chart** → Top SKUs by Inventory Turnover  
 - **Scatter Plot** → Price vs Demand (behavioral analysis)  
-- **Bar Chart** → Inventory Risk (Days of Inventory)  
+- **Scatter Plott** → Inventory Risk (Days of Inventory)  
 - **Line Chart** → Demand Trends over Time  
 
 📷 Screenshots available in the `/images` folder.
